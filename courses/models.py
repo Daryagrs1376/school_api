@@ -10,7 +10,6 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
-
 class Enrollment(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     student = models.ForeignKey(User, on_delete=models.CASCADE)
