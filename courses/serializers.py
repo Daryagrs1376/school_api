@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import Course, Enrollment
 
-
 class CourseSerializer(serializers.ModelSerializer):
     total_students = serializers.SerializerMethodField()
     passed_students = serializers.SerializerMethodField()
@@ -20,6 +19,4 @@ class CourseSerializer(serializers.ModelSerializer):
     def get_pass_percentage(self, obj):
         total = self.get_total_students(obj)
         passed = self.get_passed_students(obj)
-        if total == 0:
-            return 0
-        return round((passed / total) * 100, 2)
+        return 0 if total == 0 else round((passed / total) * 100, 2)
