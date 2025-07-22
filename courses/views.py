@@ -8,7 +8,6 @@ class CourseViewSet(viewsets.ViewSet):
     def list(self, request):
         courses = Course.objects.all()
 
-        # اگر فیلتر passed_students وجود داشت
         passed_min = request.query_params.get('passed_students__gte')
         passed_max = request.query_params.get('passed_students__lte')
 
@@ -18,15 +17,13 @@ class CourseViewSet(viewsets.ViewSet):
             passed_students = Enrollment.objects.filter(course=course, passed=True).count()
             pass_percentage = round((passed_students / total_students) * 100, 2) if total_students > 0 else 0
 
-            # اعمال فیلترها
             if passed_min and passed_students < int(passed_min):
-                continue
+                continue 
             if passed_max and passed_students > int(passed_max):
                 continue
 
-            # داده نهایی
             result.append({
-                'id': course.id,
+                'id': course.id,           "کلید اصلی مدل کورس"
                 'title': course.title,
                 'instructor': course.instructor.id,
                 'total_students': total_students,
