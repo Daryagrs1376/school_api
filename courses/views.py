@@ -11,7 +11,7 @@ class CourseViewSet(viewsets.ReadOnlyModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_class = CourseFilter
 
-    def get_queryset(self):
+    def get_queryset(self): 
         return Course.objects.annotate(
             total_students=Count('enrollment', distinct=True),
             passed_students=Count('enrollment', filter=Q(enrollment__passed=True), distinct=True)
