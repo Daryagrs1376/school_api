@@ -1,3 +1,12 @@
+djangorestframework = 3.16.0
+django-filter = 25.1
+psycopg2-binary = 2.9.5
+django-debug-toolbar = 3.2.4
+
+
+
+
 # pip install djangorestframework,
 # pip install django-filter,
 # pip install psycopg2-binary,
+# pip install django-debug-toolbar,

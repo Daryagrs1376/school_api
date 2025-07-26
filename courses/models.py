@@ -1,5 +1,7 @@
+from django import db
 from django.db import models
 from django.contrib.auth.models import User
+
 
 
 class Course(models.Model):
@@ -13,7 +15,7 @@ class Enrollment(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='enrollments')
     student = models.ForeignKey(User, on_delete=models.CASCADE)
     grade = models.FloatField(null=True, blank=True)
-    passed = models.BooleanField(default=False)
+    passed = models.BooleanField(default=False, db_index=True)
 
     def __str__(self):
         return f"{self.student} in {self.course}"
