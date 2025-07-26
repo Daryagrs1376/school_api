@@ -6,6 +6,7 @@ from .serializers import CourseSerializer
 from .filters import CourseFilter
 
 
+
 class CourseViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = CourseSerializer
     filter_backends = [DjangoFilterBackend]
